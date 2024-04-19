@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:lazyxchacha/lazyxchacha.dart';
@@ -23,7 +24,7 @@ void main() {
 
     // Then
     expect(actual, isNotNull);
-    print(actual);
+    debugPrint(actual);
   });
 
   test('Should return plaintext when decrypt success', () async {

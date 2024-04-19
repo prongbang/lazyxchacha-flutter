@@ -23,7 +23,5 @@ void main() async {
   final plaintext = await lazyxchacha.decrypt(ciphertext, serverSharedKey);
 
   // Output
-  if (kDebugMode) {
-    print('Output: $plaintext');
-  } // Output: Hello lazyxchacha
+  debugPrint('Output: $plaintext');
 }
