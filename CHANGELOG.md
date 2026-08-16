@@ -1,3 +1,7 @@
+## 1.1.0
+
+- Add `encryptRaw` and `decryptRaw` for bytes input/output
+
 ## 1.0.1
 
 - Add example

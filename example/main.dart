@@ -1,3 +1,4 @@
+import 'package:convert/convert.dart';
 import 'package:flutter/foundation.dart';
 import 'package:lazyxchacha/keypair.dart';
 import 'package:lazyxchacha/lazyxchacha.dart';
@@ -24,4 +25,14 @@ void main() async {
 
   // Output
   debugPrint('Output: $plaintext');
+
+  // Raw bytes in / bytes out
+  final rawKey = hex.decode(clientSharedKey);
+  final rawPlaintext = Uint8List.fromList([0, 1, 2, 253, 254, 255]);
+
+  final rawCiphertext = await lazyxchacha.encryptRaw(rawPlaintext, rawKey);
+  final rawDecrypted = await lazyxchacha.decryptRaw(rawCiphertext, rawKey);
+
+  // Output
+  debugPrint('Raw output: $rawDecrypted');
 }

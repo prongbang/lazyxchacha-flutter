@@ -16,7 +16,7 @@ Lazy XChaCha20-Poly1305 in Flutter base on [cryptography](https://pub.dev/packag
 
 ```yaml
 dependencies:
-  lazyxchacha: ^1.0.0
+  lazyxchacha: ^1.1.0
 ```
 
 - Dart
@@ -60,4 +60,16 @@ final sharedKey = await clientKeyPair.sharedKey(serverKeyPair.pk);
 const ciphertext = '1ec54672d8ef2cca351';
 
 final plaintext = await lazyXChaCha.decrypt(ciphertext, sharedKey);
+```
+
+- Encrypt/Decrypt raw bytes
+
+```dart
+final lazyXChaCha = LazyXChaCha.instance;
+final sharedKey = await clientKeyPair.sharedKey(serverKeyPair.pk);
+final key = hex.decode(sharedKey); // or any 32-byte key
+final plaintext = Uint8List.fromList([0, 1, 2, 253, 254, 255]);
+
+final ciphertext = await lazyXChaCha.encryptRaw(plaintext, key); // Uint8List
+final decrypted = await lazyXChaCha.decryptRaw(ciphertext, key); // Uint8List
 ```
